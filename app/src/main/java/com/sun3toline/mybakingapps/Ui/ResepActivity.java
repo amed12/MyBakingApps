@@ -24,10 +24,14 @@ public class ResepActivity extends AppCompatActivity implements ResepFragment.On
     }
 
     private void initRecipeFragment(){
+        /*
+        It is due to use of FragmentTransaction#add(). Only add a Fragment when onSavedInatnceState is null. However for safety purposes you can just use FragmentTransaction#replace().
+Prefer replace() to add() because the latter can lead to overlapping fragments if not managed properly with FragmentTransaction. add() needs to be used really carefully.
+         */
         ResepFragment rf = new ResepFragment();
         FragmentManager fm=getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.fragment_container, rf, ResepFragment.class.getSimpleName());
+        ft.replace(R.id.fragment_container, rf, ResepFragment.class.getSimpleName());
         ft.commit();
     }
 
