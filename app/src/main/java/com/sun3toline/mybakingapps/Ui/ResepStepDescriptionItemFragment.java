@@ -118,9 +118,7 @@ public class ResepStepDescriptionItemFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        if (Util.SDK_INT <= 23){
-            releasePlayer();
-        }
+        releasePlayer();
     }
 
     @Override

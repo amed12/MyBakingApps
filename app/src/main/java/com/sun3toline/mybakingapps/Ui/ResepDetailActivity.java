@@ -36,16 +36,18 @@ public class ResepDetailActivity extends AppCompatActivity
     private RecipeStepDetailPageAdapter adapter;
 
     @Override
-    public void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         EventBus.getDefault().register(this);
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
         EventBus.getDefault().unregister(this);
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
