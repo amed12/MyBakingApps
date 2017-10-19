@@ -30,6 +30,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.endsWith;
+
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -92,14 +94,14 @@ public class MainActivityTest {
             e.printStackTrace();
         }
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.step_short_description), withText("Recipe Introduction"),
+                allOf(withId(R.id.step_short_description), withText(endsWith("Recipe Introduction")),
                         childAtPosition(
                                 childAtPosition(
                                         IsInstanceOf.<View>instanceOf(android.widget.FrameLayout.class),
                                         0),
                                 1),
                         isDisplayed()));
-        textView3.check(matches(withText("Recipe Introduction")));
+        textView3.check(matches(isDisplayed()));
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
